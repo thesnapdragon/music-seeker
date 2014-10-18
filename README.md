@@ -11,3 +11,9 @@ A felhasználó eszközein (asztali PC vagy mobileszköz) tárolt zenéi alapjá
 * [iTunes](https://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
 * [Last.fm](http://www.last.fm/api)
 * [Google Music](http://unofficial-google-music-api.readthedocs.org/en/latest/)
+
+## LINKEK
+
+* [stagger](https://code.google.com/p/stagger/)
+* [GTK3](http://python-gtk-3-tutorial.readthedocs.org/en/latest/)
+* [Requests](http://docs.python-requests.org/en/latest/)
