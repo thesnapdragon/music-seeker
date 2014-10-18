@@ -1,0 +1,74 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[magyar]{babel}
+\usepackage{times}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[intlimits,sumlimits]{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+% listings begin
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{literate=%
+{Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ß}{{\ss}}2
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+{é}{{\'e}}1
+{ő}{{\"o}}1
+{á}{{\'a}}1
+{ó}{{\'o}}1
+{í}{{\'i}}1
+{ú}{{\'u}}1
+{ű}{{\"u}}1
+}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% listings end
+%opening
+\author{MusicSeeker}
+\title{Szoftverarchitektúrák NagyHF}
+\date{\today}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%Címoldal%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+\vspace*{\fill}
+\hrulefill\\[0.5cm]
+  \textsc{\LARGE Követelményspecifikáció}\\[0.5cm] 
+  \textsc{\Large Melyik zeneszolgáltatást válasszam? }\\[0.2cm]
+  \textsc{\large Szoftverarchitektúrák tárgy házi feladat}\\[0.5cm]
+\hrule
+ \end{center}
+ \vspace{3cm}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Készítette:\\[0.2cm]
+\textsc{Fekete} Norbert Zoltán\\[0.2cm]
+CO0DA1\\
+feno26@gmail.com
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+\begin{flushleft} \large
+\vspace{0.82cm}
+\textsc{Unicsovics} Milán György\\[0.2cm]
+M9GNTV\\
+u.milan@gmail.com
+\end{flushleft}
+\end{minipage}
+\vspace*{\fill}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%Szöveg%%%%%%%%%%%%%%%%%%%%%%
+
+\input{specification}
+
+\end{document}
