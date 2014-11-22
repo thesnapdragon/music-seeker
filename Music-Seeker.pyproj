@@ -4,15 +4,15 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2e3d21ee-2ea8-4e7a-9643-c3186cf9cb6e}</ProjectGuid>
-    <ProjectHome>src\</ProjectHome>
-    <StartupFile>music_seeker.py</StartupFile>
+    <ProjectHome>.\</ProjectHome>
+    <StartupFile>src\music_seeker.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId />
-    <InterpreterVersion />
+    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
+    <InterpreterVersion>3.4</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -21,22 +21,30 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="control\album.py" />
-    <Compile Include="control\controller.py" />
-    <Compile Include="control\deezer_provider.py" />
-    <Compile Include="control\file_scanner.py" />
-    <Compile Include="control\itunes_provider.py" />
-    <Compile Include="control\lastfm_provider.py" />
-    <Compile Include="control\music_scanner.py" />
-    <Compile Include="control\spotify_provider.py" />
-    <Compile Include="control\__init__.py" />
-    <Compile Include="gui\window_handler.py" />
-    <Compile Include="gui\__init__.py" />
-    <Compile Include="music_seeker.py" />
+    <Compile Include="src\control\album.py" />
+    <Compile Include="src\control\controller.py" />
+    <Compile Include="src\control\deezer_provider.py" />
+    <Compile Include="src\control\file_scanner.py" />
+    <Compile Include="src\control\itunes_provider.py" />
+    <Compile Include="src\control\lastfm_provider.py" />
+    <Compile Include="src\control\music_scanner.py" />
+    <Compile Include="src\control\spotify_provider.py" />
+    <Compile Include="src\control\__init__.py" />
+    <Compile Include="src\gui\window_handler.py" />
+    <Compile Include="src\gui\__init__.py" />
+    <Compile Include="src\music_seeker.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="control" />
-    <Folder Include="gui" />
+    <Folder Include="src\" />
+    <Folder Include="src\control" />
+    <Folder Include="src\gui" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.md" />
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.4" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
