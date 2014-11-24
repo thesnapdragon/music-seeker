@@ -55,4 +55,6 @@ target/
 
 # specific
 *.sublime-*
+*.sln
+*.pyproj
 doc/*.gummi
