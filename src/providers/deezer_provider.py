@@ -8,9 +8,9 @@ class DeezerProvider:
     def __init__(self):
         self.endpoint = 'http://api.deezer.com/search/album'
 
-    def search(self, album):
+    def search(self, music_scanner, album):
         payload = {'q': '{0}+{1}'.format(album.artist, album.title)}
         payload_str = "&".join("%s=%s" % (k,v) for k,v in payload.items())
         r = requests.get(self.endpoint, params=payload_str)
         response = json.loads(r.text)
-        return int(len(response['data'])) > 0
+        music_scanner.store_result(album, int(len(response['data'])) > 0)

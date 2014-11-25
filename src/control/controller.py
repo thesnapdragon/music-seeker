@@ -10,3 +10,8 @@ class Controller:
 
     def scan_files(self, file_path):
         return self.file_scanner.get_albums(file_path)
+
+    def search_albums(self, albums):
+        for album in albums:
+            self.music_scanner.search(album)
+        return self.music_scanner.album_available
