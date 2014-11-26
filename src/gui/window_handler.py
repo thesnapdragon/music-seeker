@@ -22,6 +22,42 @@ class WindowHandler:
         """quits the application"""
         Gtk.main_quit(*args)
 
+    
+    ## paging functions
+
+    #TODO: bels? notebookban next gombokat/tabokat tiltani, amíg nincs kész az el?z? m?velet
+
+    def on_home_button_clicked(self, button):
+        self.builder.get_object('outer_notebook').set_current_page(0)
+
+    def on_home_scan_button_clicked(self, button):
+        self.builder.get_object('outer_notebook').set_current_page(1)
+        self.builder.get_object('notebook').set_current_page(0)
+
+    def on_home_search_button_clicked(self, button):
+        self.builder.get_object('outer_notebook').set_current_page(2)
+
+    def on_next_button_clicked(self, button):
+        self.builder.get_object('notebook').next_page()
+
+
+    ## simple keyword search page
+
+    #TODO: másoláskor csak átírtam a nevüket, de: Biztosan kell ennyi handler?? Button.Click-re kéne lekérdezni
+    def on_k_itunes_checkbox_toggled(self, button):
+        pass
+
+    def on_k_lastfm_checkbox_toggled(self, button):
+        pass
+
+    def on_k_spotify_checkbox_toggled(self, button):
+        pass
+
+    def on_k_deezer_checkbox_toggled(self, button):
+        pass
+
+
+    ## complex coverage scan page
     # scan files tab
 
     #TODO
@@ -58,18 +94,12 @@ class WindowHandler:
             self.report_scan_progress)
         worker.start()
 
-    def on_scan_next_button_clicked(self, button):
-        self.builder.get_object('notebook').next_page()
-
 
     # search music tab
 
     def on_search_button_clicked(self, button):
         self.controller.search_albums(self.controller.albums)
         print(self.controller.albums_available)
-
-    def on_search_next_button_clicked(self, button):
-        self.builder.get_object('notebook').next_page()
 
     def on_deezer_checkbox_toggled(self, checkbox):
         if checkbox.get_active():
