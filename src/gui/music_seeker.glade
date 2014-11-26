@@ -183,7 +183,7 @@
                 <property name="can_focus">False</property>
                 <child>
                   <object class="GtkFileChooserButton" id="folder_chooser">
-                    <property name="width_request">400</property>
+                    <property name="width_request">280</property>
                     <property name="height_request">28</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -227,20 +227,7 @@
                   </object>
                   <packing>
                     <property name="x">320</property>
-                    <property name="y">85</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkProgressBar" id="scan_progressbar">
-                    <property name="width_request">290</property>
-                    <property name="height_request">25</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="show_text">True</property>
-                  </object>
-                  <packing>
-                    <property name="x">20</property>
-                    <property name="y">80</property>
+                    <property name="y">44</property>
                   </packing>
                 </child>
                 <child>
@@ -271,7 +258,7 @@
                   </object>
                   <packing>
                     <property name="x">20</property>
-                    <property name="y">125</property>
+                    <property name="y">70</property>
                   </packing>
                 </child>
                 <child>
@@ -285,7 +272,7 @@
                   </object>
                   <packing>
                     <property name="x">20</property>
-                    <property name="y">145</property>
+                    <property name="y">85</property>
                   </packing>
                 </child>
                 <child>
@@ -309,7 +296,7 @@
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow1">
                     <property name="width_request">400</property>
-                    <property name="height_request">200</property>
+                    <property name="height_request">260</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="shadow_type">in</property>
@@ -354,7 +341,19 @@
                   </object>
                   <packing>
                     <property name="x">20</property>
-                    <property name="y">165</property>
+                    <property name="y">110</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinner" id="scan_spinner">
+                    <property name="width_request">30</property>
+                    <property name="height_request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="x">390</property>
+                    <property name="y">7</property>
                   </packing>
                 </child>
               </object>
@@ -641,6 +640,18 @@
                   <packing>
                     <property name="x">20</property>
                     <property name="y">170</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinner" id="search_spinner">
+                    <property name="width_request">30</property>
+                    <property name="height_request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="x">390</property>
+                    <property name="y">8</property>
                   </packing>
                 </child>
               </object>

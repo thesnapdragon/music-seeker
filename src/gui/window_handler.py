@@ -5,6 +5,7 @@ from providers.deezer_provider import DeezerProvider
 from providers.itunes_provider import ItunesProvider
 from providers.lastfm_provider import LastfmProvider
 from providers.spotify_provider import SpotifyProvider
+from misc.future import Future
 
 class WindowHandler:
     """handling main window"""
@@ -62,18 +63,33 @@ class WindowHandler:
         self.controller.selected_folder = folder_chooser.get_filename()
 
     def on_scan_button_clicked(self, button):
-        self.controller.scan_files(self.controller.selected_folder)
+        Future(self.controller.scan_files, self.controller.selected_folder, self.on_scan_future_finish)
+        self.builder.get_object('scan_spinner').start()
+
+    def on_scan_future_finish(self):
+        self.builder.get_object('scan_spinner').stop()
         albums_results = self.builder.get_object('albums_results')
+        albums_results.clear()
         for album in self.controller.albums:
             albums_results.append([album.artist, album.title])
 
     # search music tab
 
     def on_search_button_clicked(self, button):
-        self.controller.search_albums(self.controller.albums)
+        Future(self.controller.search_albums, self.controller.albums, self.on_search_future_finish, self.set_progressbar)
+        self.builder.get_object('search_spinner').start()
+
+    def on_search_future_finish(self):
+        self.set_progressbar(1)
+        self.builder.get_object('search_spinner').stop()
         albums_available_results = self.builder.get_object('albums_available_results')
+        albums_available_results.clear()
         for album in zip(self.controller.albums_available.keys(), self.controller.albums_available.values()):
             albums_available_results.append([album[0].artist, album[0].title, album[1][0], album[1][1], album[1][2], album[1][3]])
+
+    def set_progressbar(self, value):
+        search_progressbar = self.builder.get_object('search_progressbar')
+        search_progressbar.set_fraction(value)
 
     def on_deezer_checkbox_toggled(self, checkbox):
         if checkbox.get_active():
