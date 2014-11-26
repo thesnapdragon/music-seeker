@@ -1,5 +1,8 @@
 from gi.repository import Gtk
+from gi.overrides import GObject
+import time #test only
 
+from gui.background_worker import BackgroundWorker
 from providers.deezer_provider import DeezerProvider
 from providers.itunes_provider import ItunesProvider
 from providers.lastfm_provider import LastfmProvider
@@ -21,16 +24,43 @@ class WindowHandler:
 
     # scan files tab
 
+    #TODO
+    def print_scan_status(self, result):
+        tv = self.builder.get_object('scan_textview')
+        button = self.builder.get_object('scan_button')
+        num = len(self.controller.albums)
+        tv.get_buffer().set_text('HELLO COMPLETE\nFound ' + str(num) + ' albums!')
+        print(self.controller.albums)
+        button.set_sensitive(True)
+
+    def report_scan_progress(self, status):
+        pb = self.builder.get_object('scan_progressbar')
+        pb.set_fraction(status)
+
+    #TODO
+    def scan_delegate(self, worker):
+        worker.report(0.1)
+        self.controller.scan_files(self.controller.selected_folder)
+        worker.report(0.2)
+        for i in range(20, 101):
+            time.sleep(0.05)
+            worker.report(i * 0.01)
+
     def on_folder_chooser_selection_changed(self, folder_chooser):
         """changes current folder for music scan"""
         self.controller.selected_folder = folder_chooser.get_filename()
 
     def on_scan_button_clicked(self, button):
-        self.controller.scan_files(self.controller.selected_folder)
-        print(self.controller.albums)
+        button.set_sensitive(False)
+        worker = BackgroundWorker(
+            self.scan_delegate,
+            self.print_scan_status,
+            self.report_scan_progress)
+        worker.start()
 
     def on_scan_next_button_clicked(self, button):
         self.builder.get_object('notebook').next_page()
+
 
     # search music tab
 

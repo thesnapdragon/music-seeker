@@ -88,6 +88,7 @@
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="fraction">0.02</property>
                 <property name="show_text">True</property>
               </object>
               <packing>
@@ -126,11 +127,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="textview1">
+              <object class="GtkTextView" id="scan_textview">
                 <property name="width_request">400</property>
                 <property name="height_request">170</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="cursor_visible">False</property>
               </object>
               <packing>
                 <property name="x">20</property>
@@ -280,11 +283,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="textview2">
+              <object class="GtkTextView" id="search_textview">
                 <property name="width_request">400</property>
                 <property name="height_request">170</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="cursor_visible">False</property>
               </object>
               <packing>
                 <property name="x">20</property>
