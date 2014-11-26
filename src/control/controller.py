@@ -32,7 +32,8 @@ class Controller:
     def albums_available(self, value):
         self._albums_available = value
     
-    def __init__(self):
+    def __init__(self, builder):
+        self.builder = builder
         self.selected_folder = ''
         self.albums = []
         self.albums_available = {}

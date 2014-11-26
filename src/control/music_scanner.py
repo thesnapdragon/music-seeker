@@ -16,8 +16,11 @@ class MusicScanner:
 
     def search(self, album):
         self.albums_available[album] = []
-        for service in [service for service in self.music_services if service is not None]:
-            service.search(self, album)
+        for service in self.music_services:
+            if service is None:
+                self.albums_available[album].append(False)
+            else:
+                service.search(self, album)
 
     def store_result(self, album, result):
         self.albums_available[album].append(result)
