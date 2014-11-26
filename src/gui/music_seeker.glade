@@ -2,10 +2,20 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
-  <object class="GtkImage" id="next_button_image">
+  <object class="GtkImage" id="next_button_image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-go-forward</property>
+  </object>
+  <object class="GtkImage" id="next_button_image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-go-forward</property>
+  </object>
+  <object class="GtkImage" id="scan_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-find</property>
   </object>
   <object class="GtkImage" id="search_image">
     <property name="visible">True</property>
@@ -14,9 +24,9 @@
   </object>
   <object class="GtkWindow" id="main_window">
     <property name="can_focus">False</property>
-    <signal name="destroy" handler="on_delete_window" swapped="no"/>
+    <signal name="destroy" handler="on_main_window_destroy" swapped="no"/>
     <child>
-      <object class="GtkNotebook" id="notebook1">
+      <object class="GtkNotebook" id="notebook">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <child>
@@ -24,7 +34,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkFileChooserButton" id="local_folder_chooser">
+              <object class="GtkFileChooserButton" id="folder_chooser">
                 <property name="width_request">400</property>
                 <property name="height_request">28</property>
                 <property name="visible">True</property>
@@ -32,6 +42,7 @@
                 <property name="action">select-folder</property>
                 <property name="create_folders">False</property>
                 <property name="title" translatable="yes">Choose folder</property>
+                <signal name="selection-changed" handler="on_folder_chooser_selection_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="x">20</property>
@@ -49,11 +60,11 @@
               </object>
               <packing>
                 <property name="x">20</property>
-                <property name="y">20</property>
+                <property name="y">10</property>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="sca_button">
+              <object class="GtkButton" id="scan_button">
                 <property name="label">Scan</property>
                 <property name="width_request">100</property>
                 <property name="height_request">30</property>
@@ -62,7 +73,9 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="resize_mode">queue</property>
+                <property name="image">scan_image</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="on_scan_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="x">320</property>
@@ -70,7 +83,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkProgressBar" id="progressbar1">
+              <object class="GtkProgressBar" id="scan_progressbar">
                 <property name="width_request">290</property>
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
@@ -83,18 +96,21 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="sca_next_button">
+              <object class="GtkButton" id="scan_next_button">
                 <property name="label">Next</property>
                 <property name="width_request">100</property>
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_bottom">20</property>
+                <property name="image">next_button_image1</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="on_scan_next_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="x">320</property>
-                <property name="y">400</property>
+                <property name="y">385</property>
               </packing>
             </child>
             <child>
@@ -161,8 +177,9 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="margin_bottom">20</property>
-                <property name="image">next_button_image</property>
+                <property name="image">next_button_image2</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="on_search_next_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="x">320</property>
@@ -194,6 +211,7 @@
                 <property name="xalign">0</property>
                 <property name="always_show_image">True</property>
                 <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_deezer_checkbox_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="x">30</property>
@@ -210,6 +228,7 @@
                 <property name="receives_default">False</property>
                 <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_spotify_checkbox_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="x">150</property>
@@ -229,7 +248,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkProgressBar" id="progressbar2">
+              <object class="GtkProgressBar" id="search_progressbar">
                 <property name="width_request">290</property>
                 <property name="height_request">25</property>
                 <property name="visible">True</property>
@@ -253,6 +272,7 @@
                 <property name="resize_mode">queue</property>
                 <property name="image">search_image</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="on_search_button_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="x">320</property>
@@ -285,22 +305,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="itunes_checkbox">
-                <property name="label" translatable="yes">iTunes</property>
-                <property name="width_request">100</property>
-                <property name="height_request">30</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="xalign">0</property>
-                <property name="draw_indicator">True</property>
-              </object>
-              <packing>
-                <property name="x">30</property>
-                <property name="y">70</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkCheckButton" id="lastfm_checkbox">
                 <property name="label" translatable="yes">Last.fm</property>
                 <property name="width_request">100</property>
@@ -310,10 +314,28 @@
                 <property name="receives_default">False</property>
                 <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_lastfm_checkbox_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="x">150</property>
                 <property name="y">40</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="itunes_checkbox">
+                <property name="label" translatable="yes">iTunes</property>
+                <property name="width_request">100</property>
+                <property name="height_request">30</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="xalign">0</property>
+                <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_itunes_checkbox_toggled" swapped="no"/>
+              </object>
+              <packing>
+                <property name="x">30</property>
+                <property name="y">70</property>
               </packing>
             </child>
           </object>

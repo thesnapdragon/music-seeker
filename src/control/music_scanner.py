@@ -1,29 +1,23 @@
-from providers.deezer_provider import DeezerProvider
-from providers.itunes_provider import ItunesProvider
-from providers.lastfm_provider import LastfmProvider
-from providers.spotify_provider import SpotifyProvider
-
 class MusicScanner:
     """docstring for MusicScanner"""
     @property
-    def album_available(self):
-        return self._album_available
-    @album_available.setter
-    def album_available(self, value):
-        self._album_available = value
+    def albums_available(self):
+        return self._albums_available
+    @albums_available.setter
+    def albums_available(self, value):
+        self._albums_available = value
 
     def __init__(self):
-        self.album_available = {}
-        self.music_services = []
-        self.music_services.append(DeezerProvider())
-        self.music_services.append(ItunesProvider())
-        self.music_services.append(LastfmProvider())
-        self.music_services.append(SpotifyProvider())
+        self.albums_available = {}
+        self.music_services = [None, None, None, None]
+
+    def set_music_service(self, idx, service):
+        self.music_services[idx] = service
 
     def search(self, album):
-        self.album_available[album] = []
-        for service in self.music_services:
+        self.albums_available[album] = []
+        for service in [service for service in self.music_services if service is not None]:
             service.search(self, album)
 
     def store_result(self, album, result):
-        self.album_available[album].append(result)
+        self.albums_available[album].append(result)

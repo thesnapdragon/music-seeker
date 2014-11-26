@@ -13,9 +13,8 @@ def main():
     working_dir = os.path.dirname(os.path.realpath(__file__))
     gui_path = os.path.join(working_dir, 'gui', 'music_seeker.glade')
     builder.add_from_file(gui_path)
-    builder.connect_signals(WindowHandler(Controller()))
-
-    window = builder.get_object("main_window")
+    builder.connect_signals(WindowHandler(Controller(), builder))
+    window = builder.get_object('main_window')
     window.show_all()
 
     Gtk.main()
