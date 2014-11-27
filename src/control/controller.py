@@ -44,9 +44,10 @@ class Controller:
         self.albums = self.file_scanner.get_albums(folder_path)
         callback()
 
-    def search_albums(self, albums, callback, progressbar_callback):
+    def search_albums(self, albums, callback, progressbar_callback = None):
         for i, album in enumerate(albums):
-            progressbar_callback(i / float(len(albums)))
+            if progressbar_callback:
+                progressbar_callback(i / float(len(albums)))
             self.music_scanner.search(album)
         self.albums_available = self.music_scanner.albums_available
         callback()

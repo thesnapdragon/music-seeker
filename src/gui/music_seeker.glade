@@ -907,7 +907,7 @@
             <child>
               <object class="GtkCheckButton" id="k_deezer_checkbox">
                 <property name="label" translatable="yes">Deezer</property>
-                <property name="width_request">100</property>
+                <property name="width_request">70</property>
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -915,28 +915,26 @@
                 <property name="xalign">0</property>
                 <property name="always_show_image">True</property>
                 <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_k_deezer_checkbox_toggled" swapped="no"/>
               </object>
               <packing>
-                <property name="x">30</property>
+                <property name="x">20</property>
                 <property name="y">40</property>
               </packing>
             </child>
             <child>
               <object class="GtkCheckButton" id="k_spotify_checkbox">
                 <property name="label" translatable="yes">Spotify</property>
-                <property name="width_request">100</property>
+                <property name="width_request">70</property>
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_k_spotify_checkbox_toggled" swapped="no"/>
               </object>
               <packing>
-                <property name="x">150</property>
-                <property name="y">70</property>
+                <property name="x">230</property>
+                <property name="y">40</property>
               </packing>
             </child>
             <child>
@@ -948,7 +946,7 @@
               </object>
               <packing>
                 <property name="x">20</property>
-                <property name="y">160</property>
+                <property name="y">150</property>
               </packing>
             </child>
             <child>
@@ -966,22 +964,8 @@
                 <signal name="clicked" handler="on_k_search_button_clicked" swapped="no"/>
               </object>
               <packing>
-                <property name="x">320</property>
-                <property name="y">130</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkTextView" id="k_search_textview">
-                <property name="width_request">400</property>
-                <property name="height_request">170</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="editable">False</property>
-                <property name="cursor_visible">False</property>
-              </object>
-              <packing>
-                <property name="x">20</property>
-                <property name="y">200</property>
+                <property name="x">330</property>
+                <property name="y">118</property>
               </packing>
             </child>
             <child>
@@ -994,41 +978,39 @@
               </object>
               <packing>
                 <property name="x">20</property>
-                <property name="y">175</property>
+                <property name="y">170</property>
               </packing>
             </child>
             <child>
               <object class="GtkCheckButton" id="k_lastfm_checkbox">
                 <property name="label" translatable="yes">Last.fm</property>
-                <property name="width_request">100</property>
+                <property name="width_request">70</property>
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_k_lastfm_checkbox_toggled" swapped="no"/>
               </object>
               <packing>
-                <property name="x">150</property>
+                <property name="x">160</property>
                 <property name="y">40</property>
               </packing>
             </child>
             <child>
               <object class="GtkCheckButton" id="k_itunes_checkbox">
                 <property name="label" translatable="yes">iTunes</property>
-                <property name="width_request">100</property>
+                <property name="width_request">70</property>
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="on_k_itunes_checkbox_toggled" swapped="no"/>
               </object>
               <packing>
-                <property name="x">30</property>
-                <property name="y">70</property>
+                <property name="x">90</property>
+                <property name="y">40</property>
               </packing>
             </child>
             <child>
@@ -1046,6 +1028,185 @@
               <packing>
                 <property name="x">20</property>
                 <property name="y">385</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinner" id="k_spinner">
+                <property name="width_request">30</property>
+                <property name="height_request">30</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="x">400</property>
+                <property name="y">15</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="k_artist">
+                <property name="width_request">240</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+              <packing>
+                <property name="x">70</property>
+                <property name="y">80</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label21">
+                <property name="width_request">50</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Artist:</property>
+              </object>
+              <packing>
+                <property name="x">10</property>
+                <property name="y">80</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label22">
+                <property name="width_request">50</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Title:</property>
+              </object>
+              <packing>
+                <property name="x">10</property>
+                <property name="y">120</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="k_title">
+                <property name="width_request">240</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+              <packing>
+                <property name="x">70</property>
+                <property name="y">120</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label23">
+                <property name="width_request">70</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Deezer:</property>
+                <attributes>
+                  <attribute name="weight" value="ultraheavy"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">20</property>
+                <property name="y">200</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label24">
+                <property name="width_request">70</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">iTunes:</property>
+                <attributes>
+                  <attribute name="weight" value="ultraheavy"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">20</property>
+                <property name="y">240</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label25">
+                <property name="width_request">70</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Last.fm:</property>
+                <attributes>
+                  <attribute name="weight" value="ultraheavy"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">20</property>
+                <property name="y">280</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label26">
+                <property name="width_request">70</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Spotify:</property>
+                <attributes>
+                  <attribute name="weight" value="ultraheavy"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">20</property>
+                <property name="y">320</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="k_deezer_image">
+                <property name="width_request">20</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-discard</property>
+              </object>
+              <packing>
+                <property name="x">100</property>
+                <property name="y">200</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="k_itunes_image">
+                <property name="width_request">20</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-discard</property>
+              </object>
+              <packing>
+                <property name="x">100</property>
+                <property name="y">240</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="k_lastfm_image">
+                <property name="width_request">20</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-discard</property>
+              </object>
+              <packing>
+                <property name="x">100</property>
+                <property name="y">280</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="k_spotify_image">
+                <property name="name">20</property>
+                <property name="width_request">20</property>
+                <property name="height_request">20</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-discard</property>
+              </object>
+              <packing>
+                <property name="x">100</property>
+                <property name="y">320</property>
               </packing>
             </child>
           </object>

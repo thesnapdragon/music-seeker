@@ -7,6 +7,7 @@ from providers.lastfm_provider import LastfmProvider
 from providers.spotify_provider import SpotifyProvider
 from misc.future import Future
 from control.statistics import Statistics
+from control.album import Album
 
 class WindowHandler:
     """handling main window"""
@@ -42,19 +43,47 @@ class WindowHandler:
     ## simple keyword search page
 
     def on_k_search_button_clicked(self, button):
-        pass
+        if self.builder.get_object('k_deezer_checkbox').get_active():
+            self.controller.music_scanner.set_music_service(0, self.deezer_provider)
+        else:
+            self.controller.music_scanner.set_music_service(0, None)
+        if self.builder.get_object('k_itunes_checkbox').get_active():
+            self.controller.music_scanner.set_music_service(1, self.itunes_provider)
+        else:
+            self.controller.music_scanner.set_music_service(1, None)
+        if self.builder.get_object('k_lastfm_checkbox').get_active():
+            self.controller.music_scanner.set_music_service(2, self.lastfm_provider)
+        else:
+            self.controller.music_scanner.set_music_service(2, None)
+        if self.builder.get_object('k_spotify_checkbox').get_active():
+            self.controller.music_scanner.set_music_service(3, self.spotify_provider)
+        else:
+            self.controller.music_scanner.set_music_service(3, None)
+        artist = self.builder.get_object('k_artist').get_text()
+        title = self.builder.get_object('k_title').get_text()
+        self.controller.albums_available = {}
+        Future(self.controller.search_albums, [Album(artist, title)], self.on_k_search_future_finish)
+        self.builder.get_object('k_spinner').start()
 
-    def on_k_itunes_checkbox_toggled(self, button):
-        pass
-
-    def on_k_lastfm_checkbox_toggled(self, button):
-        pass
-
-    def on_k_spotify_checkbox_toggled(self, button):
-        pass
-
-    def on_k_deezer_checkbox_toggled(self, button):
-        pass
+    def on_k_search_future_finish(self):
+        self.builder.get_object('search_spinner').stop()
+        results = list(self.controller.albums_available.values())[0]
+        if results[0]:
+            self.builder.get_object('k_deezer_image').set_from_stock(Gtk.STOCK_YES, 20)
+        else:
+            self.builder.get_object('k_deezer_image').set_from_stock(Gtk.STOCK_NO, 20)
+        if results[1]:
+            self.builder.get_object('k_itunes_image').set_from_stock(Gtk.STOCK_YES, 20)
+        else:
+            self.builder.get_object('k_itunes_image').set_from_stock(Gtk.STOCK_NO, 20)
+        if results[2]:
+            self.builder.get_object('k_lastfm_image').set_from_stock(Gtk.STOCK_YES, 20)
+        else:
+            self.builder.get_object('k_lastfm_image').set_from_stock(Gtk.STOCK_NO, 20)
+        if results[3]:
+            self.builder.get_object('k_spotify_image').set_from_stock(Gtk.STOCK_YES, 20)
+        else:
+            self.builder.get_object('k_spotify_image').set_from_stock(Gtk.STOCK_NO, 20)
 
     # complex coverage scan page
     # scan files tab
