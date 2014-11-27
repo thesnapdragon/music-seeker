@@ -6,6 +6,7 @@ from providers.itunes_provider import ItunesProvider
 from providers.lastfm_provider import LastfmProvider
 from providers.spotify_provider import SpotifyProvider
 from misc.future import Future
+from control.statistics import Statistics
 
 class WindowHandler:
     """handling main window"""
@@ -86,6 +87,7 @@ class WindowHandler:
         albums_available_results.clear()
         for album in zip(self.controller.albums_available.keys(), self.controller.albums_available.values()):
             albums_available_results.append([album[0].artist, album[0].title, album[1][0], album[1][1], album[1][2], album[1][3]])
+        Future(Statistics, self.controller.albums_available, self.on_statistics_future_finish)
 
     def set_progressbar(self, value):
         search_progressbar = self.builder.get_object('search_progressbar')
@@ -114,3 +116,10 @@ class WindowHandler:
             self.controller.music_scanner.set_music_service(3, self.spotify_provider)
         else:
             self.controller.music_scanner.set_music_service(3, None)
+
+    # statistics
+
+    def on_statistics_future_finish(self, data):
+        for service in ['deezer', 'itunes', 'lastfm', 'spotify']:
+            self.builder.get_object('{0}_statistics'.format(service)).set_text('{0} album found ({1} %)'.format(data[service]['count'], data[service]['percent']))
+        self.builder.get_object('bestbuy').set_text(data['best_buy'])
