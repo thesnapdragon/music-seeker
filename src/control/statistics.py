@@ -13,7 +13,7 @@ class Statistics:
         for i, service in enumerate(services):
             statistics[service] = {
                 'count': counters[i],
-                'percent': '{0:.2f}'.format(counters[i] / float(count))
+                'percent': '{0:.2f}'.format(100 * counters[i] / float(count))
             }
         statistics['best_buy'] = names[counters.index(max(counters))]
         callback(statistics)
