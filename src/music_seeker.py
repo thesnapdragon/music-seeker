@@ -14,7 +14,7 @@ def main():
     gui_path = os.path.join(working_dir, 'gui', 'music_seeker.glade')
     builder.add_from_file(gui_path)
     window_handler = WindowHandler(builder)
-    window_handler.set_controller(Controller(builder))
+    window_handler.set_controller(Controller())
     builder.connect_signals(window_handler)
     window = builder.get_object('main_window')
     window.show_all()
