@@ -1,12 +1,15 @@
-\section{Feladatkiírás}
-\label{sec:feladatkiiras}
+\section{Követelményspecifikáció}
+\label{sec:specification}
+
+\subsection{Feladatkiírás}
+\label{sub:feladatkiiras}
 
 A felhasználó eszközein (asztali PC vagy mobileszköz) tárolt zenéi alapján a rendszer megadja, hogy melyik zeneszolgáltatás katalógusában (Spotify, Deezer, Google Music,iTunes) található meg a legtöbb a tárolt zenék közül. Ehhez a különböző zeneszolgáltatások API-ját használja fel.
 
-% section feladatkiiras (end)
+% subsection feladatkiiras (end)
 
-\section{A fejlesztői csapat}
-\label{sec:afejlesztoicsapat}
+\subsection{A fejlesztői csapat}
+\label{sub:afejlesztoicsapat}
 
 A csapat tagjai:
 
@@ -25,10 +28,10 @@ Unicsovics Milán György & M9GNTV & u.milan@gmail.com \\ \hline
 
 A csapatban dedikált szerepek kiosztását a csapat kis mérete miatt nem tartottuk fontosnak.
 
-% section afejlesztoicsapat (end)
+% subsection afejlesztoicsapat (end)
 
-\section{Részletes feladatleírás}
-\label{sec:reszletesfeladatkiiras}
+\subsection{Részletes feladatleírás}
+\label{sub:reszletesfeladatkiiras}
 
 A projekt során célunk egy olyan alkalmazás készítése, amely segít a felhasználónak eligazodni a manapság egyre inkább elterjedő internetes zenei szolgáltatások világában. Ezt a felhasználó meglévő zenei gyűjteményének letapogatásával, majd annak a felhő alapú szolgáltatók készleteivel történő összevetésével éri el.
 
@@ -38,10 +41,10 @@ Emellett egyszerű, kulcsszavas keresésre is lesz lehetőség (meglévő zenef�
 
 A program első megközelítésben a \textit{Deezer}, a \textit{Spotify}, az \textit{iTunes} és a \textit{Last.Fm} szolgáltatásait fogja támogatni, de célunk egy általános architektúra kialakítása, mely később könnyedén bővíthető további szolgáltatásokkal (pl.: \textit{Google Play Music}).
 
-% section reszletesfeladatkiiras (end)
+% subsection reszletesfeladatkiiras (end)
 
-\section{Technikai paraméterek}
-\label{sec:technikaiparameterek}
+\subsection{Technikai paraméterek}
+\label{sub:technikaiparameterek}
 
 A definiált alkalmazást Python platformra készítjük el annak érdekében, hogy több operációs rendszeren (Windows, Linux, Mac OS) is lehessen használni.  Szükség lesz ezen kívül néhány Python-os könyvtárhoz, ezeket a Python csomagkezelőjével (\textit{pip}) egyszerűen lehet majd telepíteni.
 
@@ -59,12 +62,12 @@ Külső függőségeink közé tartoznak a zeneszolgáltatások API-jai is:
 
 A fent felsorolt külső függőségek sebességének függvényében, lehet, hogy szükség lesz valamilyen szerver oldali komponens fejlesztésére is, amely egy fajta cache-ként szolgálva gyorsíthatja a program működését. A szerver elérhetősége viszont a program funkcionalitását nem befolyásolja.
 
-% section technikaiparameterek (end)
+% subsection technikaiparameterek (end)
 
-\section{Szótár}
-\label{sec:szotar}
+\subsection{Szótár}
+\label{sub:szotar}
 
-% section szotar (end)
+% subsection szotar (end)
 
 \begin{description}
     \item[Zeneszolgáltatás] Kereskedelmi streamelő alkalmazás, melyben a fehasználó zenéket hallgathat illetve vásárolhat.
@@ -75,11 +78,11 @@ A fent felsorolt külső függőségek sebességének függvényében, lehet, ho
     \item[Keresés zenékre] Minden támogatott zeneszolgáltató átvizsgálása, hogy egy bizonyos zenealbum elérhető-e az adott platformon.
 \end{description}
 
-\section{Essential use-case-ek}
-\label{sec:usecaseek}
+\subsection{Essential use-case-ek}
+\label{sub:usecaseek}
 
-\subsection{Use-case diagram}
-\label{sub:ucdiagram}
+\subsubsection{Use-case diagram}
+\label{ssub:ucdiagram}
 
 \begin{figure}[htp]
 \centering
@@ -88,7 +91,10 @@ A fent felsorolt külső függőségek sebességének függvényében, lehet, ho
 \label{fig:01_UseCases}
 \end{figure}
 
+\newpage
 
-% subsection ucdiagram (end)
+% subsubsection ucdiagram (end)
 
-% section usecaseek (end)
+% subsection usecaseek (end)
+
+% section specification (end)
